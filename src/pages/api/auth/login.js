@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const mysql2 = require('mysql2');
+const mysql = require('mysql2');
 
 const app = express();
 app.use(bodyParser.json());
