@@ -3,19 +3,26 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { signIn, signOut } from "next-auth/react"
 import { useFormik } from 'formik'
+import axios from 'axios'
 
 
 export default function Login(){ 
 
   const formik = useFormik({
-    initialValues:{
-      email:'',
-      password:'',
-      username:'',
-      cpassword:''
+    initialValues: {
+      username: '',
+      email: '',
+      password: '',
     },
-    onSubmit
-  })
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.post('http://localhost:3000/register', values);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  });
   
   async function onSubmit(values){console.log(values)}
 
@@ -67,7 +74,9 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Username"
-                  {...formik.getFieldProps('username')}
+                  value={formik.values.username}
+                  onChange={formik.handleChange}
+                  
                   
                 />
               </div>
@@ -84,7 +93,9 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Email"
-                  {...formik.getFieldProps('email')}
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+        
                   
                 />
               </div>
@@ -98,30 +109,14 @@ export default function Login(){
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
-                  placeholder="Password"
-                  {...formik.getFieldProps('password')}
-                  
-                />
-              </div>
-
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="cpassword"
-                  name="cpassword"
-                  type="password"
-                  autoComplete="confirm-password"
-                  required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
-                  placeholder="Confirm password"
-                  {...formik.getFieldProps('cpassword')}
+                  placeholder="Password"
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+        
                   
                 />
               </div>
-
               
             </div>
             {/*Esta seccion son los inputs para el mail y el password */}
