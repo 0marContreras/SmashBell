@@ -45,13 +45,24 @@ export default function Home() {
                 </div>
               </div>
             </div> 
-            <div id="slide2" className="carousel-item relative w-full">
+            <div id="slide2" className=" Absolute carousel-item relative w-full"> 
+            <div class="hero min-h-screen bg-base-200">
+            <div class="hero-content flex-col lg:flex-row">
             <Image src={require('../../public/./Images/skeleton.jpg')} alt="Icon" className=" top 0 h-full w-full bg-cover bg-center" />
+
+                <img src="" class="max-w-sm rounded-lg shadow-2xl" />
+                <div>
+                  <h1 class="text-5xl font-bold">Box Office News!</h1>
+                  <p class="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                  </div>
+                 </div>                
+                </div>  
+                 
               <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                <a href="#slide1" className="btn btn-circle">❮</a> 
-                <a href="#slide3" className="btn btn-circle">❯</a>
-              </div>
-            </div> 
+                    <a href="#slide1" className="btn btn-circle">❮</a> 
+                    <a href="#slide3" className="btn btn-circle">❯</a>
+             </div>   
+            </div>
             <div id="slide3" className="carousel-item relative w-full">
             <Image src={require('../../public/./Images/Dva.jpg')} alt="Icon" className=" top 0 h-full w-full bg-cover bg-center" />
               <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">

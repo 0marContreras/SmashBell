@@ -29,16 +29,27 @@ export default function Login(){
 
 
   return(
-    <>
+    <>      
+
+
   
-      <div className=" mt-10 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8 shadow-xl px-6 py-6 rounded-xl">
-  
-  
-        {/*Esta seccion es para el titulo y el logo */}
-          <div>
+      <div className=" mt-10 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">       
             
+        {/*Aqui esta la imagen del fondo*/}
+         <div className='absolute'>
             <Image
+              src={require('../../public/./Images/Dragon.jpg')}
+              alt="Icon"
+              className="Background-image"
+            />
+          </div>    
+        <div className="max-w-md space-y-8 shadow-xl px-6 py-6 rounded-xl">
+       <div className='z-10'>
+
+        {/*Esta seccion es para el titulo y el logo */}
+    <div className='relative bg-white p-10 rounded-md' >
+      <div className='z-20'>
+        <Image
             src={require('../../public/CampanaLogo.png')}
             alt="Icon"
             className="mx-auto h-16 w-auto"
@@ -47,14 +58,13 @@ export default function Login(){
             <h2 className="text-center text-3xl font-bold tracking-tight text-gray-900">
               Welcome to SmashBell! {/* Texto de bienvenida */}
             </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-            </p>
-          </div>
+            <p className="mt-2 text-center text-sm text-gray-600"> </p>
         {/*Esta seccion es para el titulo y el logo */}
   
   
   
           {/*Esta seccion son los inputs para el mail y el password */}
+          
           <form className="mt-8 space-y-6" method='POST' onSubmit={formik.handleSubmit} >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
@@ -148,7 +158,10 @@ export default function Login(){
             <svg className="mr-3 h-5 w-5 text-white"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  strokeWidth="3"  strokeLinecap="round"  strokeLinejoin="round">  <path d="M21 2H3v16h5v4l4-4h5l4-4V2zM11 11V7M16 11V7" /></svg>
             Sign in with Twitch</button>
           </form>
-        </div>
+      </div> 
+      </div>
+      </div>
+      </div>
       </div>
     </>
     )
