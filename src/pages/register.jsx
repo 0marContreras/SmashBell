@@ -16,7 +16,7 @@ export default function Login(){
     },
     onSubmit: async (values) => {
       try {
-        const response = await axios.post('http://localhost:3000/register', values);
+        const response = await axios.post('http://localhost:3000', values);
         console.log(response.data);
       } catch (error) {
         console.error(error);
