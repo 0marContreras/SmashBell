@@ -1,23 +1,11 @@
 import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { signIn, signOut } from "next-auth/react"
-import { useFormik } from 'formik'
 import Link from 'next/link'
-import login_validate from '@/lib/validate'
+
 
 export default function Login(){ 
 
-  const formik = useFormik({
-    initialValues:{
-      email:'',
-      password:''
-    },
-    validate: login_validate,
-    onSubmit
-  })
-  
- 
-  async function onSubmit(values){console.log(values)}
 
   async function handleGoogleSignIn(){
     signIn('google', {callbackUrl: "http://localhost:3000"})
@@ -55,7 +43,7 @@ export default function Login(){
   
   
           {/*Esta seccion son los inputs para el mail y el password */}
-          <form className="mt-8 space-y-6" method='POST' onSubmit={formik.handleSubmit} >
+          <form className="mt-8 space-y-6" action="/api/oldAuth" method='post' >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -70,11 +58,10 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Email"
-                  {...formik.getFieldProps('email')}
+                  
                   
                 />
               </div>
-              {formik.errors.email && formik.touched.email ? <label className='ml-2 block text-sm text-red-600'>{formik.errors.email}</label>:<></>}
 
 
               <div>
@@ -89,11 +76,11 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Password"
-                  {...formik.getFieldProps('password')}
+                  minLength="8"
+                  maxLength="20"
                   
                 />
               </div>
-              {formik.errors.password && formik.touched.password ? <label className='ml-2 block text-sm text-red-600'>{formik.errors.password}</label>:<></>}
             
             </div>
             {/*Esta seccion son los inputs para el mail y el password */}
@@ -130,6 +117,8 @@ export default function Login(){
               <button
                 type="submit"
                 className="group relative flex w-full justify-center rounded-md border border-transparent  bg-slate-900 py-2 px-4 text-sm font-medium text-white hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+              
+              
               >
                 <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-slate-600 group-hover:text-slate-400" aria-hidden="true" />

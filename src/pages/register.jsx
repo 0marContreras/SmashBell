@@ -2,29 +2,10 @@ import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 import { signIn, signOut } from "next-auth/react"
-import { useFormik } from 'formik'
 import axios from 'axios'
 
 
 export default function Login(){ 
-
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      email: '',
-      password: '',
-    },
-    onSubmit: async (values) => {
-      try {
-        const response = await axios.post('http://localhost:3000', values);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-      }
-    },
-  });
-  
-  async function onSubmit(values){console.log(values)}
 
   async function handleGoogleSignIn(){
     signIn('google', {callbackUrl: "http://localhost:3000"})
@@ -58,7 +39,7 @@ export default function Login(){
   
   
           {/*Esta seccion son los inputs para el mail y el password */}
-          <form className="mt-8 space-y-6" method='POST' onSubmit={formik.handleSubmit} >
+          <form className="mt-8 space-y-6" method='POST' >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
 
@@ -74,8 +55,7 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Username"
-                  value={formik.values.username}
-                  onChange={formik.handleChange}
+      
                   
                   
                 />
@@ -93,8 +73,7 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none  border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Email"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
+  
         
                   
                 />
@@ -111,8 +90,6 @@ export default function Login(){
                   required
                   className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-slate-900 focus:outline-none focus:ring-slate-900 sm:text-sm"
                   placeholder="Password"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
         
                   
                 />
