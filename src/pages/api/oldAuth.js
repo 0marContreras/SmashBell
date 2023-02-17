@@ -22,4 +22,30 @@ export default function handler(req, res) {
     const mysql = require('mysql2')
     const connection = mysql.createConnection(process.env.DATABASE_URL_N)
     console.log('Connected to PlanetScale!')
+
+    function verificarUsuario(email, password, callback) {
+    connection.query(
+    'SELECT * FROM LegacyUsers WHERE email = ? AND password = ?',
+    [email, password],
+    function(err, results) {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, results.length > 0);
+      }
+    }
+  );
+}
+
+verificarUsuario(`${body.email}`,`${body.password}`, function(err, res) {
+  if (err) {
+    console.log(err);
+  } else {
+    if (res) {
+      console.log('Login exitoso');
+    } else {
+      console.log('Usuario o contraseña incorrectos');
+    }
   }
+});
+}
