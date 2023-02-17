@@ -16,4 +16,10 @@ export default function handler(req, res) {
     // Found the name.
     // Sends a HTTP success code
     res.status(200).json({ data: `${body.email} ${body.password}` })
+    
+
+    require('dotenv').config()
+    const mysql = require('mysql2')
+    const connection = mysql.createConnection(process.env.DATABASE_URL_N)
+    console.log('Connected to PlanetScale!')
   }
