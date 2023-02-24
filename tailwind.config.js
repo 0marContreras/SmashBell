@@ -1,5 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  theme:{
+    extend:{
+      width:{
+        '128':'32rem'
+      }
+    }
+  },
   content: [
     "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -10,7 +17,9 @@ module.exports = {
   ],
   daisyui: {
     themes: [
+      
       {
+ 
         mytheme: {
         
 "primary": "#1e667a",
