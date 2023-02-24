@@ -1,3 +1,4 @@
+
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
@@ -67,10 +68,12 @@ export default function Profile(){
                                 file-input-primary w-full max-w-xs" />
                                 <button className="mt-4 relative flex w-full btn btn-primary">Save</button>
                             </div>
+
                         </div>
                     </div>
                 </div>
                 </div>
+
                 </div>
                 </center>
             </div> 
@@ -117,6 +120,7 @@ export default function Profile(){
                     </div>
                 </div>
                 </footer>
+
         </>
  )
 
