@@ -2,7 +2,7 @@ import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import Link from 'next/link'
 import { signIn, signOut } from "next-auth/react"
-import axios from 'axios'
+
 
 
 export default function Login(){ 
@@ -39,7 +39,7 @@ export default function Login(){
   
   
           {/*Esta seccion son los inputs para el mail y el password */}
-          <form className="mt-8 space-y-6" method='POST' >
+          <form className="mt-8 space-y-6" action="/api/register" method='post' >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
 
@@ -63,7 +63,7 @@ export default function Login(){
 
               <div>
                 <label htmlFor="email-address" className="sr-only">
-                  Username
+                  Email
                 </label>
                 <input
                   id="email-address"
