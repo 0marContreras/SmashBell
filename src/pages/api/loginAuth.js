@@ -31,16 +31,13 @@ export default function handler(req, res) {
       } else {
         // Check if the user exists and the password matches.
         if (results.length > 0 && bcrypt.compareSync(body.password, results[0].password)) {
-          console.log('Logeada mija')
-          res.redirect(301, '/Home')
+          console.log("Accedio");
+          return res.status(200).json({ message: 'accesado :D' });
           
         } else {
-          console.log('Algo anda mal con tus credenciales')
-          res.redirect(301, '/login')
-          
-          return res.status(401).json({ data: 'Incorrect email or password' })
+          console.log("No Accedio");
+          return res.status(401).json({ message: 'Incorrect email or password' });
         }
       }
     })
-  }
-  
+  } 

@@ -2,19 +2,52 @@ import { LockClosedIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { signIn, signOut } from "next-auth/react"
 import Link from 'next/link'
+import {useRouter} from 'next/router'
+import {useState, useEffect} from 'react'
 
 
 export default function Login(){ 
 
+const [loginFail, setLoginFail] = useState(false);
+const router = useRouter();
+
+async function handelSubmit(event){
+  event.preventDefault();
+
+  const email = event.target.email.value;
+  const password = event.target.password.value;
+
+  const res = await fetch('/api/loginAuth',{
+    method:'POST',
+    body: JSON.stringify({email, password}),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  });
+
+  if (res.status === 401){
+    setLoginFail(true);
+    return;
+  }
+
+  router.push('/home')
+}
 
   async function handleGoogleSignIn(){
-    signIn('google', {callbackUrl: "http://localhost:3000"})
+    signIn('google', {callbackUrl: "http://localhost:3000/home"})
   }
 
   async function handleTwitchSignIn(){
-    signIn('twitch', {callbackUrl: "http://localhost:3000"})
+    signIn('twitch', {callbackUrl: "http://localhost:3000/home"})
   }
 
+      useEffect(() =>{
+        if (loginFail){
+          setTimeout(()=>{
+            setLoginFail(false);
+          }, 5000); 
+        }
+      }, [loginFail]);
 
   return(
     <>
@@ -40,10 +73,20 @@ export default function Login(){
           </div>
         {/*Esta seccion es para el titulo y el logo */}
   
-  
+            {loginFail && (
+
+              <div className="alert alert-error shadow-lg">
+                <div>
+                   <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      <span>Email or password wrong!</span>
+                </div>
+              </div>
+
+             )}
+
   
           {/*Esta seccion son los inputs para el mail y el password */}
-          <form className="mt-8 space-y-6" action="/api/loginAuth" method='post' >
+          <form className="mt-8 space-y-6" action="" method='post' onSubmit={handelSubmit} >
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
@@ -109,7 +152,6 @@ export default function Login(){
               </div>
             </div>
             {/*Esta seccion son los botones de remember me, el link para registrar un nuevo usuario*/}
-  
   
   
             {/*Boton de submit*/}
