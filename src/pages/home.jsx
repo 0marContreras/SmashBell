@@ -9,9 +9,9 @@ export default function home(){
         <>
         <Head>
                 {/*AQUI EMPIEZA LA NAVBAR HOME*/}
-        <div className="navbar bg-base-100">
+        <div className="navbar sticky top-0 z-10 bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">Smash Bell</a>
+                <a><a><Link href="/Home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link></a></a>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -21,14 +21,8 @@ export default function home(){
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                        <a className="justify-between">
-                            Profile
-                        <span className="badge">New</span>
-                        </a>
-                    </li>
-                    <li><a>Settings</a></li>
-                    <li><a>Logout</a></li>
+                        <a><Link href="/profile"  className="justify-between text-white-600 group-hover:text-slate-400">Profile</Link></a>
+                        <a><Link href="/"  className="justify-between text-white-600 group-hover:text-slate-400">Log out</Link></a>
                     </ul>
                 </div>
             </div>
@@ -39,7 +33,7 @@ export default function home(){
         <div  className="hero min-h-screen" >
             <Image src={require('../../public/./Images/Gatito.jpg')} alt="Icon"/>
                 <div className="hero-overlay bg-opacity-60"></div>
-                    <div className="hero-content text-center text-neutral-content">
+                    <div className=" text-center text-neutral-content">
                         <div className="max-w-md">
                             <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
                             <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
@@ -48,6 +42,36 @@ export default function home(){
                     </div>
                 </div> 
                 <br/>
+                {/*Aqui empieza el tablero de resultados*/}    
+                    <div className='flex'>
+                        <div className='flex mx-24'>
+                        <div className="card card-side bg-base-100 shadow-xl w-128">
+                            <figure><Image src={require('../../public/./Images/Auron.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" /></figure>
+                                <div className="card-body">
+                                    <h1 className="card-title">Auron vs Rubius</h1>
+                                    <p>Incine and min min</p>
+                                    <div className="card-actions justify-end">
+                                </div>    
+                            </div>
+                        <figure><Image src={require('../../public/./Images/Rubius.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" /></figure>
+                    </div>
+                </div>
+                <div className='flex mx-24'>
+                        <div className="card card-side bg-base-100 shadow-xl w-128">
+                            <figure><Image src={require('../../public/./Images/Auron.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" /></figure>
+                                <div className="card-body">
+                                    <h1 className="card-title">Auron vs Rubius</h1>
+                                    <p>Incine and min min</p>
+                                    <div className="card-actions justify-end">
+                                </div>    
+                            </div>
+                        <figure><Image src={require('../../public/./Images/Rubius.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" /></figure>
+                    </div>
+                </div>
+                </div>
+                <br/>
+                {/*Aqui termina el tablero de resultados*/}
+
                 {/*AQUI TERMINA EL HERO PRINCIPAL*/}   
                 {/*AQUI EMPIEZA EL TITULO DE EVENTOS TOP*/}      
                     <h1 className='text-4xl font-bold text-center'>Eventos más destacados</h1>

@@ -1,4 +1,3 @@
-
 import Head from 'next/head'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
@@ -12,33 +11,38 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Profile(){
     return(
         <>
-        <div className='absolute'>
+        <div className='absolute w-full h-full'>
             <Image
               src={require('../../public/./Images/Dragon.jpg')}
               alt="Icon"
               className="Background-image"
+              fill
             />
         </div>
-        <div className="drawer">
+        <div className="drawer"> 
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" /> 
         <div className="drawer-content flex flex-col">
-            
-            <div className="w-full navbar bg-base-300">
-            <div className="flex-none lg:hidden">
-                <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-6 h-6 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                </label>
+         <Head>   
+            <div className="navbar sticky top-0 z-10 bg-base-100">
+                <div className="flex-1">
+                    <a><Link href="/Home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link></a>
+                </div>
+                <div className="flex-none">
+                    <div className="dropdown dropdown-end">
+                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <Image src={require('../../public/./Images/Olimar.jpg')} alt="Icon" className="" />
+                            </div>
+                        </label>
+                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <a><Link href="/"  className="justify-between text-white-600 group-hover:text-slate-400">Log out</Link></a>
+                        </ul>
+                </div>
             </div> 
-            <div className="flex-1 px-2 mx-2 text-4xl font-bold">SmashBell-Profile</div>
-            <div className="flex-none hidden lg:block">
-                <ul className="menu menu-horizontal">
-                
-                <Link href="/"  className="btn btn-primary">Log out</Link> 
-                </ul>
-            </div>
-            </div>
+        </div>
+            </Head>
             <br />
-            <center>
+        <center>
             <div className='mx-10'>
             <div className="card w-128 bg-gray-800 shadow-xl ">
                 <figure className="px-10 pt-10">
@@ -48,7 +52,7 @@ export default function Profile(){
                         </div>
                     </div>  
                 </figure>
-               <div className="card-body items-center text-center">
+            <div className="card-body items-center text-center">
                     <h2 className="card-title">Omar Contreras</h2>
                     <p>El mas honesto, el heroe de todos los niños</p>
                     <div tabIndex={0} className="collapse-open border border-base-300 bg-base-100 rounded-box">
@@ -68,12 +72,10 @@ export default function Profile(){
                                 file-input-primary w-full max-w-xs" />
                                 <button className="mt-4 relative flex w-full btn btn-primary">Save</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
                 </div>
-
                 </div>
                 </center>
             </div> 
@@ -91,13 +93,11 @@ export default function Profile(){
             </div>
             </div>
 
-            <div>
-
-
-            </div>
-            
-            <footer className="footer p-10 bg-base-300 text-base-content">
+    
+            <footer className="footer relative bg-base-100 text-base-content">
+                <br/>
                 <div>
+                <br/>
                     <span className="footer-title">Services</span> 
                     <a className="link link-hover">Branding</a> 
                     <a className="link link-hover">Design</a> 
@@ -105,6 +105,7 @@ export default function Profile(){
                     <a className="link link-hover">Advertisement</a>
                 </div> 
                 <div>
+                <br/>
                     <span className="footer-title">Company</span> 
                     <a className="link link-hover">About us</a> 
                     <a className="link link-hover">Contact</a> 
@@ -112,6 +113,7 @@ export default function Profile(){
                     <a className="link link-hover">Press kit</a>
                 </div> 
                 <div>
+                <br/>
                     <span className="footer-title">Social</span> 
                     <div className="grid grid-flow-col gap-4">
                     <a><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" className="fill-current"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg></a>
@@ -120,7 +122,6 @@ export default function Profile(){
                     </div>
                 </div>
                 </footer>
-
         </>
  )
 
