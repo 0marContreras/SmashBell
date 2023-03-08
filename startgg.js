@@ -55,9 +55,35 @@ const getCompletedMatches = (eventId) => {
 }
 
 
+const getStandings = (eventId) => {
+
+    fetch(startggUrl, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Accept': 'application/json',
+            Authorization: 'Bearer ' + apiKey
+        },
+
+        body: JSON.stringify({
+            query: "query EventStandings($eventId: ID!, $page: Int!, $perPage: Int!) {event(id: $eventId) {id name standings(query: {perPage: $perPage, page: $page}) {nodes {placement entrant {id name}}}}}",
+            variables: {
+                eventId: 810860,
+                page: 1,
+                perPage: 100
+            },
+        })
+    }).then(r => r.json())
+    .then(data => {
+        console.log(data.data.event.standings.nodes[39]);
+    })
+}
+
+
 
 
 
 //https://www.start.gg/tournament/revenge-round-8/event/ultimate-singles
 getEventId('revenge-round-8', 'ultimate-singles');
 getCompletedMatches(810860);
+getStandings(810860);
