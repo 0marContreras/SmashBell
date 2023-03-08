@@ -3,8 +3,15 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import { useSession} from "next-auth/react"
 import Link from 'next/link'
+import { useEffect } from 'react'
+import { getEvents } from './api/apiController'
 
 export default function Event(){
+
+    useEffect(() => {
+         let events = getEvents();
+      }, []);
+
     return(
         <>
         
@@ -34,7 +41,6 @@ export default function Event(){
         
         <div className='p-10'>
                       {/*AQUI EMPIEZA EL LISTADO DE CARDS*/}   
-                        
                         <div className='flex'>
                             <div className='flex mx-4'>
                             <br />
@@ -56,7 +62,7 @@ export default function Event(){
                                             <div className="card w-96 glass text-center text-neutral-content">   
                                                 <figure><Image src={require('../../public/./Images/Orquesta.jpg')} alt="car!"/></figure>
                                                     <div className="card-body">
-                                                        <h2 className="card-title">Life hack</h2>
+                                                        <h2 className="card-title">YAYAYAYAYYA</h2>
                                                         <p>How to park your car at your garage?</p>
                                                         <div className="card-actions justify-end">
                                                             <button className="btn btn-primary">Learn now!</button>
