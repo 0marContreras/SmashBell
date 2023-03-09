@@ -4,6 +4,7 @@ const startggUrl = "https://api.start.gg/gql/alpha";
 const apiKey = '1ab56b87f62bb1948ed4bb0c786618fa';
 
 export function getEvents(eventNum){
+    let respuesta = new Array();
     fetch(startggUrl, {
         method: 'POST',
         headers: {
@@ -22,10 +23,12 @@ export function getEvents(eventNum){
         })
     }).then(r => r.json())
     .then(data => {
-        //for(let i = 0; i <= 10; i++){
-        //console.log(data.data.tournaments.nodes[0]);
-    //}
+        for(let i = 0; i <= eventNum; i++){
+        //console.log(data.data.tournaments.nodes[i]);
+        respuesta[i] = data.data.tournaments.nodes[i];
+        
 
-    return data.data.tournaments.nodes[eventNum].name;
+    }
+    console.log(respuesta);
     })
 }
