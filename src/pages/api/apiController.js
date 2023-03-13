@@ -29,6 +29,7 @@ export function getEvents(eventNum){
         
 
     }
-    console.log(respuesta);
+    //console.log(respuesta);
     })
+    return respuesta
 }
