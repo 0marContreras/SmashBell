@@ -17,28 +17,26 @@ module.exports = {
   ],
   daisyui: {
     themes: [
-      
       {
- 
         mytheme: {
         
-"primary": "#1e667a",
+"primary": "#1e40af",
         
-"secondary": "#0443d6",
+"secondary": "#f3f4f6",
         
-"accent": "#ea77c4",
+"accent": "#1FB2A5",
         
-"neutral": "#1E141F",
+"neutral": "#191D24",
         
-"base-100": "#2F2D39",
+"base-100": "#1f2937",
         
-"info": "#4F9EC9",
+"info": "#3ABFF8",
         
-"success": "#196758",
+"success": "#36D399",
         
-"warning": "#F7BA40",
+"warning": "#FBBD23",
         
-"error": "#DB3E29",
+"error": "#F87272",
         },
       },
     ],

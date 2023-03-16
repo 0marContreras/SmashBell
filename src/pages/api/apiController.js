@@ -13,7 +13,7 @@ export function getEvents(eventNum) {
       Authorization: 'Bearer ' + apiKey
     },
     body: JSON.stringify({
-      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: false videogameIds: $videogameIds}}) {nodes {id name slug}}}',
+      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: true videogameIds: $videogameIds}}) {nodes {id name slug}}}',
       variables: {
         videogameIds: [1386],
         page: 1,

@@ -30,7 +30,7 @@ export default function Event() {
                             <h2 className="card-title">{evento.name}</h2>
                             <p>How to park your car at your garage?</p>
                             <div className="card-actions justify-end">
-                                <button className="btn btn-primary">View Event</button>
+                               <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
                             </div>
                         </div>
                     </div>
