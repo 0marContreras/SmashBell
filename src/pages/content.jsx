@@ -17,7 +17,7 @@ export default function Content() {
         .then((data) => setTweets(data))
         .catch((error) => console.error(error));
     }, []);
-  console.log(tweets)
+  //console.log(tweets)
     const tweetItems = tweets.map((tweetUrl) => (
       <div key={tweetUrl}>
         

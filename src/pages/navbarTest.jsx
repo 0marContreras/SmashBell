@@ -9,7 +9,7 @@ export default function NavBar(){
                 {/*AQUI EMPIEZA LA NAVBAR HOME*/}
         <div className="navbar sticky top-0 z-10 bg-base-100">
             <div className="flex-1">
-                <Link href="/Home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link>
+                <Link href="/home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">

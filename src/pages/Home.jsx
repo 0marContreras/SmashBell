@@ -4,17 +4,73 @@ import { Inter } from '@next/font/google'
 import { useSession} from "next-auth/react"
 import Link from 'next/link'
 import Footer from './footer'
-
+import { getEvents } from './api/apiController'
+import { useEffect} from 'react'
+import { TwitterEmbed } from 'react-social-media-embed';
 import dynamic from 'next/dynamic'
+import { useState } from 'react'
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
+
+
 export default function home(){
+    const [events, setEvents] = useState([]);
+    const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    getEvents(3)
+      .then((events) => {
+        //console.log(events);
+        setEvents(events);
+      })
+      .catch((error) => console.error(error));
+
+      fetch('/api/twitterController')
+        .then((res) => res.json())
+        .then((data) => setTweets(data))
+        .catch((error) => console.error(error));
+  }, []);
+
+  const cardItems = events.map((evento, i) => (
+    
+            <div className='flex mx-4'>
+            <br />
+                <div className="card w-96 glass text-center text-neutral-content">   
+                    <figure><Image src={require('../../public/./Images/saitama.jpg')} alt="car!"/></figure>
+                        <div className="card-body">
+                            <h2 className="card-title">{evento.name}</h2>
+                            <p>How to park your car at your garage?</p>
+                            <div className="card-actions justify-end">
+                               <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+                ));
+
+                const tweetItems = tweets.map((tweetUrl) => (
+                    <div key={tweetUrl}>
+                      
+                      
+                      <TwitterEmbed
+                          style={{
+                      maxWidth: 550
+                          }}
+                              url={tweetUrl}
+                              width="100%"
+                          />
+                      
+              
+                      
+                    </div>
+                  ));
     return(
         <>
         <Head>
                 {/*AQUI EMPIEZA LA NAVBAR HOME*/}
         <div className="navbar sticky top-0 z-10 bg-base-100">
             <div className="flex-1">
-                <a><a><Link href="/Home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link></a></a>
+                <a><a><Link href="/home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link></a></a>
             </div>
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -78,61 +134,23 @@ export default function home(){
                         <br/>
                 {/*AQUI TERMINA EL TITULO DE EVENTOS TOP*/}      
                 {/*AQUI EMPIEZA EL LISTADO DE CARDS*/}   
-                        <div className='flex'>
-                            <div className='flex mx-12'>
-                            <br />
-                                <div className="card w-96 glass text-center text-neutral-content">   
-                                    <figure><Image src={require('../../public/./Images/cat.jpg')} alt="car!"/></figure>
-                                        <div className="card-body">
-                                            <h2 className="card-title">Life hack</h2>
-                                            <p>How to park your car at your garage?</p>
-                                            <div className="card-actions justify-end">
-                                                <button className="btn btn-primary">Learn now!</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <br />
-                                </div>
-                                    <div className='flex mx-12'>
-                                    <br />
-                                        <div className='container block-line flex'>
-                                            <div className="card w-96 glass text-center text-neutral-content">   
-                                                <figure><Image src={require('../../public/./Images/Orquesta.jpg')} alt="car!"/></figure>
-                                                    <div className="card-body">
-                                                        <h2 className="card-title">Life hack</h2>
-                                                        <p>How to park your car at your garage?</p>
-                                                        <div className="card-actions justify-end">
-                                                            <button className="btn btn-primary">Learn now!</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className='flex mx-12'>
-                                        <br />
-                                            <div className='container block-line flex'>
-                                                <div className="card w-96 glass text-center text-neutral-content">   
-                                                    <figure><Image src={require('../../public/./Images/Gatodiablo.png')} alt="car!"/></figure>
-                                                        <div className="card-body">
-                                                            <h2 className="card-title">Life hack</h2>
-                                                            <p>How to park your car at your garage?</p>
-                                                            <div className="card-actions justify-end">
-                                                                <button className="btn btn-primary">Learn now!</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br/>
+                <div className='p-10'>
+                      <div className="grid grid-cols-4 gap-4">
+                        <>{cardItems}</>
+                    </div>
+                </div>
                                         <center>
                                             <Link href="/events"  className="btn btn-primary">Todos los eventos</Link>  
                                         </center>
                                         <br />
-                {/*AQUI TERMINA EL LISTADO DE CARDS*/}  
-                {/*AQUI EMPIEZA EL PIE DE PAGINA*/}
+                
+                                        <div className='p-10'>
+        <div className="grid grid-cols-4 gap-4">
+          {tweetItems}
+        </div>
+      </div>
                                        <Footer/>
-            {/*AQUI TERMINA EL PIE DE PAGINA*/}
+            
                                    </>
            )
         }

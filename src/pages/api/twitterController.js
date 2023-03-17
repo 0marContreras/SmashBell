@@ -15,7 +15,7 @@ var client = new Twitter({
         res.status(500).send(error);
       } else {
         // Obtener la URL de cada tweet
-        console.log(response)
+        //console.log(response)
         const urls = tweets.statuses.map((tweet) => {
           return `https://twitter.com/${tweet.user.screen_name}/status/${tweet.id_str}`;
         });
