@@ -30,3 +30,5 @@ export function getEvents(eventNum) {
       return respuesta;
     });
 }
+
+
