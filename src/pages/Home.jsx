@@ -4,7 +4,7 @@ import { Inter } from '@next/font/google'
 import { useSession} from "next-auth/react"
 import Link from 'next/link'
 import Footer from './footer'
-import { getEvents } from './api/apiController'
+import { getEvents} from './api/apiController'
 import { useEffect} from 'react'
 import { TwitterEmbed } from 'react-social-media-embed';
 import dynamic from 'next/dynamic'
@@ -15,6 +15,7 @@ const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 export default function home(){
     const [events, setEvents] = useState([]);
     const [tweets, setTweets] = useState([]);
+    
 
   useEffect(() => {
     getEvents(3)
@@ -24,46 +25,47 @@ export default function home(){
       })
       .catch((error) => console.error(error));
 
+
+
+
       fetch('/api/twitterController')
         .then((res) => res.json())
         .then((data) => setTweets(data))
         .catch((error) => console.error(error));
   }, []);
 
-  const cardItems = events.map((evento, i) => (
-    
-            <div className='flex mx-4'>
-            <br />
-                <div className="card w-96 glass text-center text-neutral-content">   
-                    <figure><Image src={require('../../public/./Images/saitama.jpg')} alt="car!"/></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{evento.name}</h2>
-                            <p>How to park your car at your garage?</p>
-                            <div className="card-actions justify-end">
-                               <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                </div>
-                ));
 
-                const tweetItems = tweets.map((tweetUrl) => (
-                    <div key={tweetUrl}>
-                      
-                      
-                      <TwitterEmbed
-                          style={{
-                      maxWidth: 550
-                          }}
-                              url={tweetUrl}
-                              width="100%"
-                          />
-                      
-              
-                      
-                    </div>
-                  ));
+  const cardItems = events.map((evento, i) => (
+    <div className='flex mx-4'>
+      <br />
+      <div className="card w-96 glass text-center text-neutral-content">  
+        <figure>
+          <Image src={evento.images[1].url} width={383} height={400} alt="event" />
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">{evento.name}</h2>
+          <p>How to park your car at your garage?</p>
+          <div className="card-actions justify-end">
+            <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  ));
+  
+
+    const tweetItems = tweets.map((tweetUrl) => (
+        <div key={tweetUrl}>                
+            <TwitterEmbed
+                style={{
+                maxWidth: 550
+                }}
+                url={tweetUrl}
+                width="100%"
+                /> 
+        </div>
+        ));
     return(
         <>
         <Head>
@@ -139,6 +141,8 @@ export default function home(){
                         <>{cardItems}</>
                     </div>
                 </div>
+
+
                                         <center>
                                             <Link href="/events"  className="btn btn-primary">Todos los eventos</Link>  
                                         </center>

@@ -7,12 +7,13 @@ import { useEffect, useState } from 'react'
 import { getEvents } from './api/apiController'
 import NavBar from './navbarTest'
 import Footer from './footer'
+import { typeOf } from 'tls'
 
 export default function Event() {
   const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    getEvents(15)
+    getEvents(5)
       .then((events) => {
         //console.log(events);
         setEvents(events);
@@ -20,24 +21,13 @@ export default function Event() {
       .catch((error) => console.error(error));
   }, []);
 
-  const cardItems = events.map((evento, i) => (
+  const cardItems = events.map((evento, i) => {
+    evento.images[1].url ? (
+      
+    ) :
+  }
+  )
     
-            <div className='flex mx-4'>
-            <br />
-                <div className="card w-96 glass text-center text-neutral-content">   
-                    <figure><Image src={require('../../public/./Images/saitama.jpg')} alt="car!"/></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">{evento.name}</h2>
-                            <p>How to park your car at your garage?</p>
-                            <div className="card-actions justify-end">
-                               <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                </div>
-                
-  ));
 
   return (
     <>

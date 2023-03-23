@@ -2,7 +2,6 @@
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 const startggUrl = "https://api.start.gg/gql/alpha";
 const apiKey = '1ab56b87f62bb1948ed4bb0c786618fa';
-var respuesta = new Array();
 
 export function getEvents(eventNum) {
   return fetch(startggUrl, {
@@ -13,7 +12,7 @@ export function getEvents(eventNum) {
       Authorization: 'Bearer ' + apiKey
     },
     body: JSON.stringify({
-      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: true videogameIds: $videogameIds}}) {nodes {id name slug}}}',
+      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: false videogameIds: $videogameIds}}) {nodes {id name slug images{url}}}}',
       variables: {
         videogameIds: [1386],
         page: 1,
@@ -21,14 +20,18 @@ export function getEvents(eventNum) {
       },
     })
   })
-    .then(r => r.json())
+    .then(r => r.json())     
     .then(data => {
       const respuesta = [];
       for (let i = 0; i <= eventNum; i++) {
+        //console.log(data.data.tournaments.nodes[i])
         respuesta[i] = data.data.tournaments.nodes[i];
       }
       return respuesta;
     });
 }
+
+
+
 
 
