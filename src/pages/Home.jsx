@@ -143,18 +143,17 @@ export default function home(){
                 </div>
 
 
-                                        <center>
-                                            <Link href="/events"  className="btn btn-primary">Todos los eventos</Link>  
-                                        </center>
-                                        <br />
+        <center>
+            <Link href="/events"  className="btn btn-primary">Todos los eventos</Link>  
+        </center>
+        <br/>
                 
-                                        <div className='p-10'>
+        <div className='p-10'>
         <div className="grid grid-cols-4 gap-4">
           {tweetItems}
         </div>
       </div>
-                                       <Footer/>
-            
-                                   </>
-           )
-        }
+    <Footer/>         
+</>
+)
+}
