@@ -9,7 +9,7 @@ var client = new Twitter({
 
   export default function handler(req, res) {
    
-    client.get('search/tweets', {q: 'MKLeo'}, function(error, tweets, response) {
+    client.get('search/tweets', {q: 'Ultimate Summit'}, function(error, tweets, response) {
       if (error) {
         console.log(error);
         res.status(500).send(error);

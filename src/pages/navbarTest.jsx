@@ -4,13 +4,17 @@ import Image from 'next/image'
 export default function NavBar(){
     return(
         <>
-        
-        
                 {/*AQUI EMPIEZA LA NAVBAR HOME*/}
-        <div className="navbar sticky top-0 z-10 bg-base-100">
+        <div className="navbar sticky top-0 z-10 bg-slate-900 border-b-4 border-base-100">
             <div className="flex-1">
                 <Link href="/home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link>
-            </div>
+                <Link href="/events" className="btn btn-ghost normal-case text-md">Events</Link>
+                <form className='ml-10' action="">
+                    <div className="form-control">
+                        <input type="text" placeholder="Search a player" className="input input-bordered" />
+                    </div>
+                </form>
+            </div>            
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
                     <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
@@ -25,8 +29,7 @@ export default function NavBar(){
                 </div>
             </div>
         </div> 
-                {/*AQUI TERMINA LA NAVBAR HOME*/}     
-         
+                {/*AQUI TERMINA LA NAVBAR HOME*/} 
 
         </>
     )

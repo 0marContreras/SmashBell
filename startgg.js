@@ -42,7 +42,7 @@ const getCompletedMatches = (eventId) => {
         body: JSON.stringify({
             query: "query EventSets($eventId: ID!, $page: Int!, $perPage: Int!) { event(id: $eventId) {sets(page: $page perPage: $perPage sortType: STANDARD) {pageInfo {total} nodes {id slots {entrant {name}}}}}}",
             variables: {
-                eventId: 810860,
+                eventId: eventId,
                 page: 1,
                 perPage: 5
             },
@@ -68,14 +68,14 @@ const getStandings = (eventId) => {
         body: JSON.stringify({
             query: "query EventStandings($eventId: ID!, $page: Int!, $perPage: Int!) {event(id: $eventId) {id name standings(query: {perPage: $perPage, page: $page}) {nodes {placement entrant {id name}}}}}",
             variables: {
-                eventId: 810860,
+                eventId: eventId,
                 page: 1,
                 perPage: 100
             },
         })
     }).then(r => r.json())
     .then(data => {
-        console.log(data.data.event.standings.nodes[39]);
+        console.log(data.data.event.standings.nodes[0]);
     })
 }
 
@@ -84,6 +84,6 @@ const getStandings = (eventId) => {
 
 
 //https://www.start.gg/tournament/revenge-round-8/event/ultimate-singles
-getEventId('revenge-round-8', 'ultimate-singles');
-getCompletedMatches(810860);
-getStandings(810860);
+getEventId('smash-ultimate-summit-6', 'ultimate-singles');
+getCompletedMatches(848958);
+getStandings(848958);

@@ -11,7 +11,7 @@ export function getEvents(eventNum) {
       Authorization: 'Bearer ' + apiKey
     },
     body: JSON.stringify({
-      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: true videogameIds: $videogameIds}}) {nodes {id name slug images{url}}}}',
+      query: 'query TournamentsByVideogames($perPage: Int, $videogameIds: [ID]) {tournaments(query: {perPage: $perPage page: 1 sortBy: "startAt asc" filter: {upcoming: true hasOnlineEvents: false videogameIds: $videogameIds}}) {nodes {id name slug rules images{url} events{id}}}}',
       variables: {
         videogameIds: [1386],
         page: 1,
@@ -73,3 +73,31 @@ const getEventId = (tournamentName, eventName) => {
 
 
 
+export function getStandings() {
+let stnd = [];
+ return fetch(startggUrl, {
+      method: 'POST',
+      headers: {
+          'content-type': 'application/json',
+          'Accept': 'application/json',
+          Authorization: 'Bearer ' + apiKey
+      },
+
+      body: JSON.stringify({
+          query: "query EventStandings($eventId: ID!, $page: Int!, $perPage: Int!) {event(id: $eventId) {id name standings(query: {perPage: $perPage, page: $page}) {nodes {placement entrant {id name}}}}}",
+          variables: {
+              eventId: 848958,
+              page: 1,
+              perPage: 100
+          },
+      })
+  }).then(r => r.json())
+  .then(data => {
+      //console.log(data.data.event.standings.nodes[0]);
+      stnd[0] = data.data.event.standings.nodes[0];
+      stnd[1] = data.data.event.standings.nodes[1];
+      stnd[2] = data.data.event.standings.nodes[2];
+
+      return stnd;
+  })
+}

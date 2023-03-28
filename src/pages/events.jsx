@@ -24,13 +24,13 @@ export default function Event() {
  const cardItems = events.map((evento, i) => (
     <div className='flex mx-4'>
       <br />
-      <div className="card w-96 glass text-center text-neutral-content">  
+      <div className="card bg-base-300 w-96 border-4 border-sky-500 text-center text-neutral-content">  
         <figure>
-          <Image src={evento.images[1].url} width={383} height={300} alt="event" />
+          <Image src={evento.images[0].url} width={383} height={300} alt="event" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{evento.name}</h2>
-          <p>How to park your car at your garage?</p>
+          <p className='truncate text-ellipsis overflow-hidden ...'>{evento.rules}</p>
           <div className="card-actions justify-end">
             <Link className="btn btn-primary" href={"https://www.start.gg/" + evento.slug}>View event</Link>
           </div>
