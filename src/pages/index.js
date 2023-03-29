@@ -16,39 +16,13 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-      {/* <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="btn btn-ghost normal-case text-xl">Smash Bell</a>
-        </div>
-        <div className="flex-none">
-          <div className="dropdown dropdown-end">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full">
-              <Image src={require('../../public/./Images/Olimar.jpg')} alt="Icon" className="" />
-              </div>
-            </label>
-            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-              <li>
-                <a className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </a>
-              </li>
-              <li><a>Settings</a></li>
-              <li><a>Logout</a></li>
-            </ul>
-          </div>
-        </div>
-      </div> */}
-      </Head>
       
       <main>
       {/* Aqui empieza el carousel*/}
       <div className="carousel w-full"> 
       {/* Aqui empieza la slide 1 */}
         <div id="slide1" className="relative carousel-item w-full">
-        <Image src={require('../../public/./Images/Demon.jpg')} alt="Icon" className="opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
+        <Image src={require('../../public/./Images/p1.jpg')} alt="Icon" className="opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
           <div className="hero min-h-screen">
            <div className="hero-overlay"></div>
             <div className="hero-content text-center text-neutral-content">
@@ -68,7 +42,7 @@ export default function Home() {
           {/* Aqui termina la slide 1 */}
           {/* Aqui empieza la slide 2 */}
           <div id="slide2" className="relative carousel-item w-full "> 
-            <Image src={require('../../public/./Images/Mercy.jpg')} alt="Icon" className="opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
+            <Image src={require('../../public/./Images/p2.jpg')} alt="Icon" className="opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
             <div className="hero min-h-screen">
              <div className="hero-overlay"></div>
               <div className="hero-content text-center text-neutral-content">
@@ -88,7 +62,7 @@ export default function Home() {
             {/* Aqui termina la slide 2 */}
             {/* Aqui empieza la slide 3 */}
             <div id="slide3" className="carousel-item relative w-full">
-            <Image src={require('../../public/./Images/Robot.jpg')} alt="Icon" className=" opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
+            <Image src={require('../../public/./Images/p3.jpg')} alt="Icon" className=" opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
             <div className="hero min-h-screen">
                <div className="hero-overlay"></div>
                 <div className="hero-content text-center text-neutral-content">
@@ -108,7 +82,7 @@ export default function Home() {
             {/* Aqui termina la slide 3 */}
             {/* Aqui empieza la slide 4 */}
             <div id="slide4" className="carousel-item relative w-full">
-            <Image src={require('../../public/./Images/Dva2.jpg')} alt="Icon" className=" opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
+            <Image src={require('../../public/./Images/evo.webp')} alt="Icon" className=" opacity-60 absolute top 0 h-full w-full bg-cover bg-center" />
             <div className="hero min-h-screen">
                       <div className="hero-overlay"></div>
                         <div className="hero-content text-center text-neutral-content">

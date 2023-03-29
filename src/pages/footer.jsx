@@ -2,7 +2,7 @@ export default function Footer(){
     
     return (
     <>
-    <footer className="footer relative p-10 bg-base-300 text-base-content">
+    <footer className="footer relative p-10 bg-base-300 text-base-content static bottom-0">
         <div>
             <span className="footer-title">Services</span> 
             <a className="link link-hover">Branding</a> 

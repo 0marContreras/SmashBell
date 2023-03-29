@@ -6,6 +6,7 @@ import {useRouter} from 'next/router'
 import {useState, useEffect} from 'react'
 import Head from 'next/head'
 import Footer from './footer'
+import Navunlog from './navunlog'
 
 export default function Login(){ 
 
@@ -53,20 +54,15 @@ async function handelSubmit(event){
   return(
     <>
 
-<Head>
-        <div className="navbar sticky top-0 z-10 bg-base-100">
-          <div className="flex-1">
-            <a className="btn btn-ghost normal-case text-xl">Smash Bell</a>
-          </div>
-        </div>
-      </Head>
+    <Navunlog/>
+
       <div className="mt-10 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         {/* Aqui esta la imagen del fondo */}
         <div className='absolute w-full h-full'>
           <Image
-            src='/Images/Dragon.jpg'
+            src='/Images/p5.jpg'
             alt="Icon"
-            className="Background-image"
+            className="Background-image blur-sm"
             fill
             
           />
