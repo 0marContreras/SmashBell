@@ -80,10 +80,44 @@ const getStandings = (eventId) => {
 }
 
 
+function getPlayerId (pSlug)  {
+
+    let slug = "user/" + pSlug;
+    let rrr;
+    
+    return fetch(startggUrl, {
+        method: 'POST',
+        headers: {
+            'content-type': 'application/json',
+            'Accept': 'application/json',
+            Authorization: 'Bearer ' + apiKey
+        },
+  
+        body: JSON.stringify({
+            query: "query EventQuery($slug: String) {user(slug: $slug) {id player{id}}}",
+            variables: {
+                slug: slug
+            },
+        })
+    }).then(r => r.json())
+    .then(data => {
+        console.log(data.data.user.player.id);
+        rrr  = data.data.user.player.id;
+
+        return rrr;
+        
+    })
+  
+    
+  }
+
+ 
 
 
 
 //https://www.start.gg/tournament/revenge-round-8/event/ultimate-singles
-getEventId('smash-ultimate-summit-6', 'ultimate-singles');
-getCompletedMatches(848958);
-getStandings(848958);
+//getEventId('smash-ultimate-summit-6', 'ultimate-singles');
+//getCompletedMatches(848958);
+//getStandings(848958);
+let pip = getPlayerId('3f297e74');
+console.log(pip)

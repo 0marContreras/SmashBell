@@ -11,7 +11,7 @@ export default function NavBar(){
                 <Link href="/events" className="btn btn-ghost normal-case text-md">Events</Link>
                 <form className='ml-10' action="">
                     <div className="form-control">
-                        <input type="text" placeholder="Search a player" className="input input-bordered" />
+                        <input type="text" placeholder="Search a player with its slug" className="input input-bordered w-80" />
                     </div>
                 </form>
             </div>            

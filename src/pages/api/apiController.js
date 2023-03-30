@@ -101,3 +101,47 @@ let stnd = [];
       return stnd;
   })
 }
+
+    
+  export function getSets(pSlug) {
+    let slug = "user/" + pSlug;
+  
+    return fetch(startggUrl, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Accept': 'application/json',
+        Authorization: 'Bearer ' + apiKey
+      },
+      body: JSON.stringify({
+        query: "query EventQuery($slug: String) {user(slug: $slug) {id player{id gamerTag}}}",
+        variables: {
+          slug: slug
+        },
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      let playerId = data.data.user.player.id;
+      return fetch(startggUrl, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'Accept': 'application/json',
+          Authorization: 'Bearer ' + apiKey
+        },
+        body: JSON.stringify({
+          query: "query Sets($id: ID!) {player(id: $id) {id sets(perPage: 100, page: 1) {nodes {id displayScore event {id name tournament {id name}}}}}}",
+          variables: {
+            id: playerId
+          },
+        })
+      })
+      .then(r => r.json())
+      .then(data => {
+        let sets = data.data.player.sets.nodes;
+        return sets.slice(0, 20); // return only the first 10 sets
+      });
+    });
+  }
+  
