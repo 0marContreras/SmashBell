@@ -47,10 +47,10 @@ export default function Home() {
              <div className="hero-overlay"></div>
               <div className="hero-content text-center text-neutral-content">
                <div className="max-w-md">
-                 <h1 className="mb-5 text-5xl font-bold">Smash Bell</h1>
-                 <p className="mb-5">Vive cada evento en la pagina más grande de noticias de Smash, crea tu cuenta ahora! 
+                 <h1 className="mb-5 text-5xl font-bold">En vivo</h1>
+                 <p className="mb-5">Vive cada evento en la pagina más grande de noticias de Smash, con streams de los torneos mas importantes en vivo! 
                    </p>
-                   <Link href="#Target1"  className="btn btn-primary">Eventos</Link> 
+                   <Link href="#Target1"  className="btn btn-primary">Partidas en vivo!</Link> 
                   </div>
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                   <a href="#slide1" className="btn btn-circle">❮</a> 
@@ -67,10 +67,10 @@ export default function Home() {
                <div className="hero-overlay"></div>
                 <div className="hero-content text-center text-neutral-content">
                  <div className="max-w-md">
-                  <h1 className="mb-5 text-5xl font-bold">Smash Bell</h1>
-                   <p className="mb-5">Vive cada evento en la pagina más grande de noticias de Smash, crea tu cuenta ahora! 
+                  <h1 className="mb-5 text-5xl font-bold">Resultados</h1>
+                   <p className="mb-5">Consulta los resultados de tu jugador favorito en tiempo real! 
                     </p>
-                    <Link href="#Target2"  className="btn btn-primary">Eventos</Link> 
+                    <Link href="#Target2"  className="btn btn-primary">Resultados y marcador!</Link> 
                    </div>
                   </div>
                  </div>   
@@ -87,8 +87,8 @@ export default function Home() {
                       <div className="hero-overlay"></div>
                         <div className="hero-content text-center text-neutral-content">
                           <div className="max-w-md">
-                            <h1 className="mb-5 text-5xl font-bold">Smash Bell</h1>
-                            <p className="mb-5">Vive cada evento en la pagina más grande de noticias de Smash, crea tu cuenta ahora! 
+                            <h1 className="mb-5 text-5xl font-bold">Eventos</h1>
+                            <p className="mb-5">Desde grandes hasta pequeños... Todos los eventos sparecen aqui!
                             </p>
                             <Link href="#Target3"  className="btn btn-primary">Eventos</Link> 
                           </div>
@@ -105,31 +105,31 @@ export default function Home() {
             
             <div id='Target1' className="hero min-h-screen bg-base-100"  >
               <div className="hero-content flex-col lg:flex-row-reverse">
-              <Image src={require('../../public/./Images/Kiriko.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
+              <Image src={require('../../public/./Images/ban4.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
                 <div>
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                  <button className="btn btn-primary">Get Started</button>
+                  <h1 className="text-5xl font-bold">Streams en directo desde Twitch!</h1>
+                  <p className="py-6">Todos los eventos mas grandes de la comunidad de smash son stremeados en nuestra plataforma! Gracias a la increible produccion de Beyond The Summit.</p>
+                  <button className="btn btn-primary"><Link href='/login'>Velos ahora!</Link></button>
                 </div>
               </div>
             </div>
             <div id='Target2' className="hero min-h-screen bg-base-200">
               <div className="hero-content flex-col lg:flex-row">
-              <Image src={require('../../public/./Images/Samurai.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
+              <Image src={require('../../public/./Images/ban1.webp')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
                 <div>
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                  <button className="btn btn-primary">Get Started</button>
+                  <h1 className="text-5xl font-bold">Obten los resultados de tus jugadores al instante!</h1>
+                  <p className="py-6">Gracias al sistema de codigos de jugador puedes seguir sus resultados en tiempo real!.</p>
+                  <button className="btn btn-primary"><Link href='/login'>Vive smash ahora!</Link></button>
                 </div>
                </div>
               </div>
               <div id='Target3'  className="hero min-h-screen bg-base-100">
               <div className="hero-content flex-col lg:flex-row-reverse">
-              <Image src={require('../../public/./Images/Sombra.png')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
+              <Image src={require('../../public/./Images/ban2.jpg')} alt="Icon" className="max-w-sm rounded-lg shadow-2xl w-64" />
                 <div>
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-                  <button className="btn btn-primary">Get Started</button>
+                  <h1 className="text-5xl font-bold">Eventos de todo tipo!</h1>
+                  <p className="py-6">Los eventos mas recientes de nuestra amada comunidad estan aqui! descubrelos y regitrate ahora.</p>
+                  <button className="btn btn-primary"><Link href='/login'>Encuentra tu proximo evento!</Link></button>
                 </div>
               </div>
             </div>
