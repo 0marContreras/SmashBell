@@ -1,15 +1,18 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react"
 import { getSets } from './api/apiController'
 import Footer from "./footer";
-import NavBar from "./navbarTest";
+import NavBarD from "./navbarTestD";
+
 
 export default function Discover(){
-
+    const router = useRouter()
     const [setsA, setSetsA] = useState([]);
+    const data = router.query.data
 
     useEffect(() => {
 
-        getSets('3f297e74')
+        getSets(data)
           .then((setsA) => {
             console.log(setsA);
             setSetsA(setsA);
@@ -38,7 +41,7 @@ export default function Discover(){
 
     return(
         <>
-        <NavBar/>
+        <NavBarD/>
         <center>
             <h1 className='text-5xl'>Recent matches and results</h1>
         </center>

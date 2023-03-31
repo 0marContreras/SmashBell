@@ -1,35 +1,16 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState } from 'react';
-import { useRouter } from 'next/router';
 import { signOut } from 'next-auth/react';
 
-export default function NavBar(){
+export default function NavBarD(){
 
-    const [inputValue, setInputValue] = useState('')
-    const router = useRouter()
-
-    async function handelSubmit(event){
-        event.preventDefault();
-      
-        const sSlug = event.target.slug.value;
-        
-        console.log(sSlug);
-
-        router.push({
-            pathname: '/discover',
-            query: { data: sSlug }
-          })
-        }
-        
-        async function handleOut(){
-            const res = await fetch('/api/logout',{
-                method:'POST'
-              });
-            console.log(res);
-            signOut({callbackUrl: "http://localhost:3000/login"})
-        }
-
+    async function handleOut(){
+        const res = await fetch('/api/logout',{
+            method:'POST'
+          });
+        console.log(res);
+        signOut({callbackUrl: "http://localhost:3000/login"})
+    }
     return(
         <>
                 {/*AQUI EMPIEZA LA NAVBAR HOME*/}
@@ -37,11 +18,6 @@ export default function NavBar(){
             <div className="flex-1">
                 <Link href="/home" className="btn btn-ghost normal-case text-xl">Smash Bell</Link>
                 <Link href="/events" className="btn btn-ghost normal-case text-md">Events</Link>
-                <form className='ml-10' onSubmit={handelSubmit} action="/discover">
-                    <div className="form-control">
-                        <input type="text" id='slug' name='slug' placeholder="Search a player with its slug" className="input input-bordered w-80" />
-                    </div>
-                </form>
             </div>            
             <div className="flex-none">
                 <div className="dropdown dropdown-end">
@@ -51,7 +27,7 @@ export default function NavBar(){
                         </div>
                     </label>
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                        <Link href="/profile"  className="justify-between">Profile</Link>
+                        <button className="justify-between"><Link href="/profile">Profile</Link></button>
                         <button  onClick={handleOut} className="justify-between">Log out</button>
                     </ul>
                 </div>
